@@ -1,0 +1,55 @@
+@import 'theme';
+@import 'utils';
+@import 'topbar';
+
+body {
+	margin: 0;
+}
+
+.content {
+	padding: $body-padding;
+
+	@include respond-to('medium') {
+		padding: $body-padding * 2;
+	}
+
+	.inner-content {
+		max-width: 1200px;
+		margin: 0 auto;
+	}
+}
+
+.card-player {
+	position: relative;
+	padding-top: 56.25%;
+
+	.react-player {
+		position: absolute;
+		top: 0;
+		left: 0;
+	}
+}
+
+.thumb-button {
+	padding: 0;
+	box-shadow: none;
+	border: none;
+	text-align: left;
+	width: 100%;
+
+	&.selected {
+		.card-header {
+			background: $success;
+		}
+	}
+}
+
+.error-page {
+	min-height: calc(100vh - $topbarHeight - $body-padding * 2 - 1px);
+
+	font-size: 20px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+}

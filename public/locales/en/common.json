@@ -1,0 +1,27 @@
+{
+	"common": {
+		"error": "Error",
+		"success": "Success",
+		"back": "Back",
+		"save": "Save",
+		"sand": "Send",
+		"no_results": "No result found",
+		"yes": "Yes",
+		"no": "No",
+		"exit": "Exit",
+		"confirm": "Confirm",
+		"cancel": "Cancel",
+		"stop": "Stop",
+		"other": "Other"
+	},
+	"404": {
+		"title": "Oops!",
+		"text": "This url seems to be invalid...",
+		"link": "Back to homepage!"
+	},
+	"500": {
+		"title": "Under construction...",
+		"text": "...",
+		"link": "Back to homepage!"
+	}
+}
