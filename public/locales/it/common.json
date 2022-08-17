@@ -1,0 +1,27 @@
+{
+	"common": {
+		"error": "Errore",
+		"success": "Successo",
+		"back": "Indietro",
+		"save": "Salva",
+		"sand": "Invia",
+		"no_results": "Nessun risultato trovato",
+		"yes": "Si",
+		"no": "No",
+		"exit": "Esci",
+		"confirm": "Conferma",
+		"cancel": "Annulla",
+		"stop": "Stop",
+		"other": "Altro"
+	},
+	"404": {
+		"title": "Oops!",
+		"text": "Sembra che non riusciamo a trovare la pagina che stai cercando...",
+		"link": "Torna alla homepage!"
+	},
+	"500": {
+		"title": "In costruzione...",
+		"text": "...",
+		"link": "Torna alla homepage!"
+	}
+}
