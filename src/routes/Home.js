@@ -5,6 +5,7 @@ const Home = () => (
 	<div className="inner-content">
 		<div className="d-grid gap-3">
 			<h1>Home</h1>
+			<p>{process.env.REACT_APP_ENDPOINT}</p>
 		</div>
 	</div>
 );

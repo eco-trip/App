@@ -78,6 +78,5 @@ node_modules
 
 # Templated files with secrets
 .npmrc
-buildspec.yml
 deploy/.aws-sam
 deploy/urls.json
