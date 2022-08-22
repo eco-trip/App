@@ -10,6 +10,7 @@ while getopts ":hSe:p:l:t:a:g:d:s:" opt; do
     Flags:
       -e  Specify the env [production, staging]
       -p  Specify the project name
+			-t  Specify the target name of application
 			-g  Specify the creator of the resource [default git username]
       -a  Specify the aws profile to use
 			-r  Specify the aws default region"
@@ -19,10 +20,13 @@ while getopts ":hSe:p:l:t:a:g:d:s:" opt; do
 		env="$OPTARG"
 		;;
 	p)
-		projectName="$OPTARG"
+		project="$OPTARG"
+		;;
+	t)
+		target="$OPTARG"
 		;;
 	g)
-		gitUsername="$OPTARG"
+		git_username="$OPTARG"
 		;;
 	a)
 		AWS_PROFILE="$OPTARG"
@@ -41,8 +45,13 @@ if [ "$env" = "" ]; then
 	exit 2
 fi
 
-if [ "$projectName" = "" ]; then
+if [ "$project" = "" ]; then
 	echo "Specify the project name with the -p flag"
+	exit 2
+fi
+
+if [ "$target" = "" ]; then
+	echo "Specify the target name of application with the -t flag"
 	exit 2
 fi
 
@@ -55,12 +64,12 @@ echo "AWS_PROFILE: ${AWS_PROFILE}"
 echo "AWS_DEFAULT_REGION: ${AWS_DEFAULT_REGION}"
 
 # SET USEFULL VAR
-rootFolder=$(dirname $(pwd))
-gitUsername=$(echo $(git config user.name) | tr '[:upper:]' '[:lower:]')
+root_folder=$(dirname $(pwd))
+git_username=$(echo $(git config user.name) | tr '[:upper:]' '[:lower:]')
 
 # SET URI FOR STACK NAME
 if [ $env = "dev" ]; then
-	URI="${projectName}"-"${env}"-"${gitUsername}"-app
+	URI="${project}"-"${env}"-"${git_username}"-"${target}"
 else
-	URI="${projectName}"-"${env}"-app
+	URI="${project}"-"${env}"-"${target}"
 fi
