@@ -25,7 +25,7 @@ fi
 
 # GET URL FROM S3 AND SET VARIABLES
 aws s3 cp ${urls} ./urls.json
-Url=$(cat urls.json | jq ".app.${env}" | tr -d '"')
+Url=$(cat urls.json | jq ".${target}.${env}" | tr -d '"')
 
 # REMOVE S3 BUCKETS
 aws s3 rm s3://${Url} --recursive 2>/dev/null || echo "S3 bucket not found, probably already deleted"
