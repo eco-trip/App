@@ -14,13 +14,17 @@ body {
 	}
 
 	.inner-content {
-		max-width: 1200px;
+		max-width: 900px;
 		margin: 0 auto;
 	}
 }
 
 .content-center {
 	min-height: calc(100vh - $topbarHeight - $body-padding * 2 - 1px);
+
+	@include respond-to('medium') {
+		min-height: calc(100vh - $topbarHeight - $body-padding * 4 - 1px);
+	}
 
 	&.full {
 		min-height: 100vh;

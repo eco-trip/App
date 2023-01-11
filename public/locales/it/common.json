@@ -26,5 +26,9 @@
 	},
 	"scan": {
 		"title": "Scan"
+	},
+	"info": {
+		"stay": "Stay",
+		"room": "Room"
 	}
 }

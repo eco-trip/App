@@ -9,6 +9,7 @@ import AppContext from '../helpers/AppContext';
 const Info = ({ setError }) => {
 	const { t } = useTranslation();
 
+	const [data, setData] = useState(true);
 	const [loading, setLoading] = useState(true);
 	const { token, setToken } = useContext(AppContext);
 
@@ -20,8 +21,8 @@ const Info = ({ setError }) => {
 				Authorization: `Bearer ${token}`
 			}
 		})
-			.then(({ data }) => {
-				console.log('OK', data);
+			.then(res => {
+				setData(res.data);
 				setLoading(false);
 			})
 			.catch(err => {
@@ -44,7 +45,34 @@ const Info = ({ setError }) => {
 
 	return (
 		<section className="inner-content">
-			<h1>Info</h1>
+			<div className="card text-center">
+				<div className="card-header">
+					<h3>{data.hotel.name}</h3>
+					{data.hotel.address || data.hotel.zipcode || data.hotel.city || data.hotel.country ? (
+						<p className="mb-0">
+							{data.hotel.address}
+							{data.hotel.zipcode && ' - ' + data.hotel.zipcode}
+							{data.hotel.city && ' - ' + data.hotel.city}
+							{data.hotel.country && ' - ' + data.hotel.country}
+						</p>
+					) : (
+						''
+					)}
+				</div>
+				<div className="card-body">
+					<h2 className="card-title">
+						{t('info.room')} #{data.room.number}
+					</h2>
+				</div>
+				<div className="card-footer">
+					<p className="text-muted mb-1">
+						{t('info.stay')} #{data.stay.id}
+					</p>
+					<button type="button" className="btn btn-link" onClick={() => setToken(null)}>
+						{t('common.exit')}
+					</button>
+				</div>
+			</div>
 		</section>
 	);
 };
