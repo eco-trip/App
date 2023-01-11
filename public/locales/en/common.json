@@ -23,5 +23,8 @@
 		"title": "Under construction...",
 		"text": "...",
 		"link": "Back to homepage!"
+	},
+	"scan": {
+		"title": "Scan"
 	}
 }

@@ -1,12 +1,13 @@
 /* eslint-disable react/jsx-no-constructed-context-values */
 import React, { useState, useLayoutEffect } from 'react';
-import Cookie from 'js-cookie';
+
+import useLocalStorage from '../hooks/useLocalStorage';
 
 const AppContext = React.createContext({});
 
 export const AppProvider = props => {
 	const [isMobile, setIsMobile] = useState(false);
-	const [user, setUser] = useState({});
+	const [token, setToken] = useLocalStorage('token', false);
 
 	useLayoutEffect(() => {
 		const updateSize = () => {
@@ -16,8 +17,6 @@ export const AppProvider = props => {
 		window.addEventListener('resize', updateSize);
 		updateSize();
 
-		if (!Cookie.get('logged')) setUser(null);
-
 		return () => window.removeEventListener('resize', updateSize);
 	}, []);
 
@@ -25,8 +24,8 @@ export const AppProvider = props => {
 		<AppContext.Provider
 			value={{
 				isMobile,
-				user,
-				setUser
+				token,
+				setToken
 			}}
 		>
 			{props.children}

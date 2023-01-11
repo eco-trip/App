@@ -8,10 +8,10 @@ const ErrorPage = ({ status = '404', link = true }) => {
 	const { t } = useTranslation();
 
 	return (
-		<section className="error-page">
+		<section className="content-center">
 			<div className="d-flex flex-column gap-3 text-center justify-content-center">
-				<h1 className="text-danger">{t(status + '.title')}</h1>
-				<FontAwesomeIcon icon={faFaceThinking} size="6x" className="text-danger" />
+				<h1>{t(status + '.title')}</h1>
+				<FontAwesomeIcon icon={faFaceThinking} size="5x" />
 				<p>{t(status + '.text')}</p>
 				{link && <Link to="/">{t(status + '.link')}</Link>}
 			</div>
