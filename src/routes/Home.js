@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 
 import AppContext from '../helpers/AppContext';
 
@@ -7,10 +7,11 @@ import Info from '../components/Info';
 
 const Home = () => {
 	const { token } = useContext(AppContext);
+	const [error, setError] = useState(null);
 
-	if (!token) return <Scan />;
+	if (!token) return <Scan error={error} />;
 
-	return <Info />;
+	return <Info setError={setError} />;
 };
 
 export default Home;

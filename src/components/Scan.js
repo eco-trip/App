@@ -15,22 +15,22 @@ const alg = 'HS256';
 
 const signJwt = async stayId => new jose.SignJWT({ stayId }).setProtectedHeader({ alg }).setIssuedAt().sign(secret);
 
-const Scan = () => {
+const Scan = ({ error }) => {
 	const { t } = useTranslation();
 	const { setToken } = useContext(AppContext);
 
-	const onClick = () =>
-		REACT_APP_ENV === 'dev' &&
-		signJwt(test).then(token => {
-			console.log(token);
-			setToken(token);
-		});
+	const onClick = () => REACT_APP_ENV === 'dev' && signJwt(test).then(token => setToken(token));
 
 	return (
 		<section className="content-center">
 			<div className="d-flex flex-column gap-3 text-center justify-content-center">
 				<h1>{t('scan.title')}</h1>
 				<FontAwesomeIcon icon={faNfcSignal} size="5x" onClick={onClick} />
+				{error && (
+					<p className="text-danger">
+						<b>{t('core:errors.' + error)}</b>
+					</p>
+				)}
 			</div>
 		</section>
 	);

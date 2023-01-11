@@ -1,11 +1,10 @@
 import React from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faFan } from '@fortawesome/pro-solid-svg-icons';
 
 const FullpageLoading = () => (
-	<section className="fullpage d-flex align-items-center flex-column justify-content-center gap-5">
-		<div className="logo bg-cover" />
-		<div animation="grow" variant="primary">
-			<span className="visually-hidden">Loading...</span>
-		</div>
+	<section className="content-center full">
+		<FontAwesomeIcon icon={faFan} size="2x" spin />
 	</section>
 );
 
