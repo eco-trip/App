@@ -23,5 +23,8 @@
 		"title": "In costruzione...",
 		"text": "...",
 		"link": "Torna alla homepage!"
+	},
+	"scan": {
+		"title": "Scan"
 	}
 }

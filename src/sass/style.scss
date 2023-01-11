@@ -19,32 +19,7 @@ body {
 	}
 }
 
-.card-player {
-	position: relative;
-	padding-top: 56.25%;
-
-	.react-player {
-		position: absolute;
-		top: 0;
-		left: 0;
-	}
-}
-
-.thumb-button {
-	padding: 0;
-	box-shadow: none;
-	border: none;
-	text-align: left;
-	width: 100%;
-
-	&.selected {
-		.card-header {
-			background: $success;
-		}
-	}
-}
-
-.error-page {
+.content-center {
 	min-height: calc(100vh - $topbarHeight - $body-padding * 2 - 1px);
 
 	font-size: 20px;
