@@ -11,6 +11,7 @@ const Index = () => (
 		<div className="content">
 			<Routes>
 				<Route exact path="/" element={<Home />} />
+				<Route exact path="/:t" element={<Home />} />
 				<Route path="*" element={<ErrorPage status="404" />} />
 			</Routes>
 		</div>

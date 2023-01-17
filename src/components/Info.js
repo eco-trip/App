@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFan } from '@fortawesome/pro-solid-svg-icons';
+import Moment from 'react-moment';
 
 import Api from '../helpers/Api';
 import AppContext from '../helpers/AppContext';
@@ -67,6 +68,15 @@ const Info = ({ setError }) => {
 				<div className="card-footer">
 					<p className="text-muted mb-1">
 						{t('info.stay')} #{data.stay.id}
+					</p>
+					<p>
+						{t('info.startTime')} <Moment date={data.stay.startTime} format="DD/MM/YYYY hh:mm" />
+						{data.stay.endTime && (
+							<>
+								{' '}
+								- {t('info.endTime')} <Moment date={data.stay.endTime} format="DD/MM/YYYY hh:mm" />
+							</>
+						)}
 					</p>
 					<button type="button" className="btn btn-link" onClick={() => setToken(null)}>
 						{t('common.exit')}
