@@ -28,7 +28,9 @@
 		"title": "Scan"
 	},
 	"info": {
-		"stay": "Stay",
-		"room": "Room"
+		"stay": "Prenotazione",
+		"room": "Stanza",
+		"startTime": "Check in at",
+		"endTime": "Check out at"
 	}
 }
