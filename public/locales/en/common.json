@@ -32,5 +32,14 @@
 		"room": "Room",
 		"startTime": "Check in at",
 		"endTime": "Check out at"
+	},
+	"dataElaboration": {
+		"loading": "data loading...",
+		"points": "Points",
+		"current": "Current",
+		"cold_flow_rate": "Cold water",
+		"hot_flow_rate": "Hot water",
+		"watt": "Watt",
+		"liters": "Liters"
 	}
 }

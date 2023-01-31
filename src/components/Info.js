@@ -7,6 +7,8 @@ import Moment from 'react-moment';
 import Api from '../helpers/Api';
 import AppContext from '../helpers/AppContext';
 
+import DataElaboration from './DataElaboration';
+
 const Info = ({ setError }) => {
 	const { t } = useTranslation();
 
@@ -64,6 +66,7 @@ const Info = ({ setError }) => {
 					<h2 className="card-title">
 						{t('info.room')} #{data.room.number}
 					</h2>
+					<DataElaboration />
 				</div>
 				<div className="card-footer">
 					<p className="text-muted mb-1">

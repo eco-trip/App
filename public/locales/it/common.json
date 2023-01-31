@@ -32,5 +32,14 @@
 		"room": "Stanza",
 		"startTime": "Check in at",
 		"endTime": "Check out at"
+	},
+	"dataElaboration": {
+		"loading": "caricamento dati...",
+		"points": "Punti",
+		"current": "Corrente",
+		"cold_flow_rate": "Acqua fredda",
+		"hot_flow_rate": "Acqua calda",
+		"watt": "Watt",
+		"liters": "Litri"
 	}
 }

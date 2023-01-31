@@ -21,6 +21,7 @@ aws s3 cp ${Urls} ./urls.json
 Url=$(cat urls.json | jq ".${Target}.${Env}" | tr -d '"')
 ApiUrl=$(cat urls.json | jq ".administration.${Env}" | tr -d '"')
 AuthUrl=$(cat urls.json | jq ".auth.${Env}" | tr -d '"')
+DataElaborationUrl=$(cat urls.json | jq '."data-elaboration".'${Env} | tr -d '"')
 
 # UPLOAD SOURCE TO S3
 aws s3 mb s3://${URI}-source/
@@ -47,10 +48,6 @@ sam deploy \
 	--capabilities CAPABILITY_NAMED_IAM CAPABILITY_AUTO_EXPAND \
 	--tags project=${Project} env=${Env} creator=${GitUsername}
 
-# GET COGNITO RESOURCES
-CognitoUserPoolID=$(aws cognito-idp describe-user-pool-domain --domain ${AuthUrl} | jq -r '.DomainDescription.UserPoolId')
-CognitoAppClientID=$(aws cognito-idp list-user-pool-clients --user-pool-id ${CognitoUserPoolID} | jq -r '.UserPoolClients[].ClientId')
-
 # BUILT REACT WITH CODEBUILD
 CookieDomain=${Url#*.}
 DistributionId=$(aws cloudformation describe-stacks --stack-name $URI --query "Stacks[0].Outputs[?OutputKey=='CloudFrontDistributionID'].OutputValue" --output text)
@@ -58,8 +55,6 @@ aws codebuild start-build \
 	--project-name "${URI}-builder" \
 	--environment-variables-override \
 	name=ApiUrl,value=${ApiUrl},type=PLAINTEXT \
-	name=CookieDomain,value=${CookieDomain},type=PLAINTEXT \
-	name=CognitoUserPoolID,value=${CognitoUserPoolID},type=PLAINTEXT \
-	name=CognitoAppClientID,value=${CognitoAppClientID},type=PLAINTEXT \
+	name=DataElaborationUrl,value=${DataElaborationUrl},type=PLAINTEXT \
 	name=DistributionId,value=${DistributionId},type=PLAINTEXT \
 	name=DeployBucket,value=${Url},type=PLAINTEXT

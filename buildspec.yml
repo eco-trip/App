@@ -12,6 +12,7 @@ phases:
       - ls
       - echo Build started on `date`
       - echo REACT_APP_ENDPOINT=https://${ApiUrl} >> .env.production
+      - echo REACT_APP_DE_ENDPOINT=https://${DataElaborationUrl} >> .env.production
       - npm run build
   post_build:
     commands:

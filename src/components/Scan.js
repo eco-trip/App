@@ -8,7 +8,7 @@ import AppContext from '../helpers/AppContext';
 
 const { REACT_APP_ENV, REACT_APP_GUEST_JWT_SECRET } = process.env;
 
-const test = '9ed4a700-9650-11ed-8096-fd01efb932f5';
+const test = '8d456990-9d7e-11ed-a128-df513efaefb8';
 
 const secret = new TextEncoder().encode(REACT_APP_GUEST_JWT_SECRET);
 const alg = 'HS256';
