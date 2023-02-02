@@ -1,0 +1,13 @@
+$topbarHeight: 60px;
+
+.topbar {
+	background: #2d3436;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: $topbarHeight;
+
+	img {
+		height: 40px;
+	}
+}

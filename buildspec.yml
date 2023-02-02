@@ -1,0 +1,25 @@
+version: 0.2
+phases:
+  pre_build:
+    commands:
+      - echo List directory files...
+      - ls
+      - echo Installing NPM dependencies
+      - npm install
+  build:
+    commands:
+      - echo List active directory...
+      - ls
+      - echo Build started on `date`
+      - echo REACT_APP_ENDPOINT=https://${ApiUrl} >> .env.production
+      - echo REACT_APP_DE_ENDPOINT=https://${DataElaborationUrl} >> .env.production
+      - npm run build
+  post_build:
+    commands:
+      - ls
+      - aws s3 cp --recursive --acl public-read --cache-control="max-age=0, no-cache, no-store, must-revalidate" ./build s3://${DeployBucket}/
+      - aws cloudfront create-invalidation --distribution-id ${DistributionId} --paths "/*"
+artifacts:
+  files:
+    - '**/*'
+  base-directory: 'build'
