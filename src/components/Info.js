@@ -8,6 +8,7 @@ import Api from '../helpers/Api';
 import AppContext from '../helpers/AppContext';
 
 import DataElaboration from './DataElaboration';
+import RealTime from './RealTime';
 
 const Info = ({ setError }) => {
 	const { t } = useTranslation();
@@ -67,6 +68,7 @@ const Info = ({ setError }) => {
 						{t('info.room')} #{data.room.number}
 					</h2>
 					<DataElaboration />
+					<RealTime hotelId="868d1d80-a311-11ed-a8b6-63045f25f40e" roomId="ae73f580-a311-11ed-a8b6-63045f25f40e" />
 				</div>
 				<div className="card-footer">
 					<p className="text-muted mb-1">
