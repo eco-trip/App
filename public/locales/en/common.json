@@ -38,8 +38,27 @@
 		"points": "Points",
 		"current": "Current",
 		"cold_flow_rate": "Cold water",
-		"hot_flow_rate": "Hot water",
+		"hot_flow_rate": "Hot water"
+	},
+	"realTime": {
+		"title": "Real Time",
+		"time": "Last detection",
+		"loading": "data loading...",
+		"current": "Current",
+		"brightness": "Brightness",
+		"temperature": "Temperature",
+		"humidity": "Humidity",
+		"hot_flow_rate": "Hot flow rate",
+		"hot_water_temperature": "Hot water temperature",
+		"cold_flow_rate": "Cold flow rate",
+		"cold_water_temperature": "Cold water temperature"
+	},
+	"units": {
 		"watt": "Watt",
-		"liters": "Liters"
+		"liters": "Liters",
+		"litersMinutes": "L/m",
+		"lumens": "Lumens",
+		"degrees": "Celsius",
+		"percent": "Percent"
 	}
 }
