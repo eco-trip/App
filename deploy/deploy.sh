@@ -52,8 +52,9 @@ sam deploy \
 CookieDomain=${Url#*.}
 MQTT_ID=$(echo ${Secrets} | jq .SecretString | jq -rc . | jq -rc '.MQTT_ID')
 
+DistributionId=$(aws cloudformation describe-stacks --stack-name $URI --query "Stacks[0].Outputs[?OutputKey=='CloudFrontDistributionID'].OutputValue" --output text)
+
 CognitoURI="${Project}"-"${Env}-cognito"
-DistributionId=$(aws cloudformation describe-stacks --stack-name ${CognitoURI} --query "Stacks[0].Outputs[?OutputKey=='CloudFrontDistributionID'].OutputValue" --output text)
 UserPoolIoT=$(aws cloudformation describe-stacks --stack-name ${CognitoURI} --query "Stacks[0].Outputs[?OutputKey=='UserPoolIoT'].OutputValue" --output text)
 UserPoolClientIot=$(aws cloudformation describe-stacks --stack-name ${CognitoURI} --query "Stacks[0].Outputs[?OutputKey=='UserPoolClientIot'].OutputValue" --output text)
 IdentityPoolIot=$(aws cloudformation describe-stacks --stack-name ${CognitoURI} --query "Stacks[0].Outputs[?OutputKey=='IdentityPoolIot'].OutputValue" --output text)
