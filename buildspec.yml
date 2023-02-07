@@ -13,11 +13,11 @@ phases:
       - echo Build started on `date`
       - echo REACT_APP_ENDPOINT=https://${ApiUrl} >> .env.production
       - echo REACT_APP_DE_ENDPOINT=https://${DataElaborationUrl} >> .env.production
-      - echo REACT_APP_AWS_COGNITO_USER_POOL_ID=https://${UserPoolIoT} >> .env.production
-      - echo REACT_APP_AWS_COGNITO_CLIENT_ID=https://${UserPoolClientIot} >> .env.production
-      - echo REACT_APP_AWS_IDENTITY_POOL_ID=https://${IdentityPoolIot} >> .env.production
-      - echo REACT_APP_MQTT_ID=https://${MQTT_ID} >> .env.production
-      - echo REACT_APP_AWS_REGION=https://${AwsRegion} >> .env.production
+      - echo REACT_APP_AWS_COGNITO_USER_POOL_ID=${UserPoolIoT} >> .env.production
+      - echo REACT_APP_AWS_COGNITO_CLIENT_ID=${UserPoolClientIot} >> .env.production
+      - echo REACT_APP_AWS_IDENTITY_POOL_ID=${IdentityPoolIot} >> .env.production
+      - echo REACT_APP_MQTT_ID=${MQTT_ID} >> .env.production
+      - echo REACT_APP_AWS_REGION=${AwsRegion} >> .env.production
       - npm run build
   post_build:
     commands:
