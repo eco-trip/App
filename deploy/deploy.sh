@@ -50,11 +50,23 @@ sam deploy \
 
 # BUILT REACT WITH CODEBUILD
 CookieDomain=${Url#*.}
-DistributionId=$(aws cloudformation describe-stacks --stack-name $URI --query "Stacks[0].Outputs[?OutputKey=='CloudFrontDistributionID'].OutputValue" --output text)
+MQTT_ID=$(echo ${Secrets} | jq .SecretString | jq -rc . | jq -rc '.MQTT_ID')
+
+CognitoURI="${Project}"-"${Env}-cognito"
+DistributionId=$(aws cloudformation describe-stacks --stack-name ${CognitoURI} --query "Stacks[0].Outputs[?OutputKey=='CloudFrontDistributionID'].OutputValue" --output text)
+UserPoolIoT=$(aws cloudformation describe-stacks --stack-name ${CognitoURI} --query "Stacks[0].Outputs[?OutputKey=='UserPoolIoT'].OutputValue" --output text)
+UserPoolClientIot=$(aws cloudformation describe-stacks --stack-name ${CognitoURI} --query "Stacks[0].Outputs[?OutputKey=='UserPoolClientIot'].OutputValue" --output text)
+IdentityPoolIot=$(aws cloudformation describe-stacks --stack-name ${CognitoURI} --query "Stacks[0].Outputs[?OutputKey=='IdentityPoolIot'].OutputValue" --output text)
+
 aws codebuild start-build \
 	--project-name "${URI}-builder" \
 	--environment-variables-override \
 	name=ApiUrl,value=${ApiUrl},type=PLAINTEXT \
 	name=DataElaborationUrl,value=${DataElaborationUrl},type=PLAINTEXT \
 	name=DistributionId,value=${DistributionId},type=PLAINTEXT \
-	name=DeployBucket,value=${Url},type=PLAINTEXT
+	name=DeployBucket,value=${Url},type=PLAINTEXT \
+	name=UserPoolIoT,value=${UserPoolIoT},type=PLAINTEXT \
+	name=UserPoolClientIot,value=${UserPoolClientIot},type=PLAINTEXT \
+	name=IdentityPoolIot,value=${IdentityPoolIot},type=PLAINTEXT \
+	name=MQTT_ID,value=${MQTT_ID},type=PLAINTEXT \
+	name=AwsRegion,value=${AWS_DEFAULT_REGION},type=PLAINTEXT

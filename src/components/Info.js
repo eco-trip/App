@@ -8,6 +8,7 @@ import Api from '../helpers/Api';
 import AppContext from '../helpers/AppContext';
 
 import DataElaboration from './DataElaboration';
+import RealTime from './RealTime';
 
 const Info = ({ setError }) => {
 	const { t } = useTranslation();
@@ -63,15 +64,9 @@ const Info = ({ setError }) => {
 					)}
 				</div>
 				<div className="card-body">
-					<h2 className="card-title">
+					<h2 className="card-title mb-0">
 						{t('info.room')} #{data.room.number}
 					</h2>
-					<DataElaboration />
-				</div>
-				<div className="card-footer">
-					<p className="text-muted mb-1">
-						{t('info.stay')} #{data.stay.id}
-					</p>
 					<p>
 						{t('info.startTime')} <Moment date={data.stay.startTime} format="DD/MM/YYYY hh:mm" />
 						{data.stay.endTime && (
@@ -80,6 +75,15 @@ const Info = ({ setError }) => {
 								- {t('info.endTime')} <Moment date={data.stay.endTime} format="DD/MM/YYYY hh:mm" />
 							</>
 						)}
+					</p>
+					<DataElaboration />
+				</div>
+				<div className="card-footer">
+					<RealTime hotelId="868d1d80-a311-11ed-a8b6-63045f25f40e" roomId="ae73f580-a311-11ed-a8b6-63045f25f40e" />
+				</div>
+				<div className="card-footer">
+					<p className="text-muted mb-1">
+						{t('info.stay')} #{data.stay.id}
 					</p>
 					<button type="button" className="btn btn-link" onClick={() => setToken(null)}>
 						{t('common.exit')}

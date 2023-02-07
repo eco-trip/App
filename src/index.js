@@ -13,6 +13,7 @@ import './sass/style.scss';
 
 const container = document.getElementById('root');
 const root = createRoot(container);
+
 root.render(
 	<Suspense fallback={<FullpageLoading />}>
 		<AppProvider>
