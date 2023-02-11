@@ -69,7 +69,7 @@ const RealTime = ({ hotelId, roomId }) => {
 		current,
 		brightness,
 		humidity,
-		temperature,
+		room_temperature,
 		hot_flow_rate,
 		hot_water_temperature,
 		cold_flow_rate,
@@ -100,7 +100,7 @@ const RealTime = ({ hotelId, roomId }) => {
 				<div className="col-6 col-md-3">
 					<FontAwesomeIcon icon={faTemperatureQuarter} size="2x" className="mb-2" />
 					<p className="text-muted fs-10">{t('realTime.temperature')}</p>
-					<h2 className="mb-0">{normalize(temperature)}</h2>
+					<h2 className="mb-0">{normalize(room_temperature)}</h2>
 					<p className="text-muted fs-10">{t('units.degrees')}</p>
 				</div>
 				<div className="col-6 col-md-3">
