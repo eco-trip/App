@@ -95,7 +95,7 @@ const RealTime = ({ hotelId, roomId }) => {
 					<FontAwesomeIcon icon={faLightbulb} size="2x" className="mb-2" />
 					<p className="text-muted fs-10">{t('realTime.current')}</p>
 					<h2 className="mb-0">{normalize(current)}</h2>
-					<p className="text-muted fs-10">{t('units.watt')}</p>
+					<p className="text-muted fs-10">{t('units.wattHours')}</p>
 				</div>
 				<div className="col-6 col-md-3">
 					<FontAwesomeIcon icon={faTemperatureQuarter} size="2x" className="mb-2" />

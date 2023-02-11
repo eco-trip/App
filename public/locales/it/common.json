@@ -55,8 +55,9 @@
 	},
 	"units": {
 		"watt": "Watt",
+		"wattHours": "Watt/ora",
 		"liters": "Litri",
-		"litersMinutes": "L/m",
+		"litersMinutes": "Litri/minuto",
 		"lumens": "Lumens",
 		"degrees": "Celsius",
 		"percent": "Percentuale"
